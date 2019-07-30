@@ -23,7 +23,8 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         MoveTiles();
- 
+
+        roofTops[0].CheckRooftopSpriteEvent();
     }
 
     private void CalculateIdleScore()
@@ -45,21 +46,24 @@ public class GameManager : MonoBehaviour
 
     public void MoveRooftop(Rooftop roofTop)
     {
-        int roofTopIndex = Array.IndexOf(roofTops, roofTop);
-        Rooftop reference = roofTops[roofTopIndex];
+        Rooftop reference1, reference2, reference3;
 
-        roofTops[0] = roofTops[1];
-        roofTops[1] = roofTops[2];
-        roofTops[2] = reference;
+        reference1 = roofTops[0];
+        reference2 = roofTops[1];
+        reference3 = roofTops[2];
+
+        roofTops[0] = reference2;
+        roofTops[1] = reference3;
+        roofTops[2] = reference1;
 
     
-        if (roofTops[1].type == RooftopType.Large && reference.type == RooftopType.Large)
+        if (roofTops[1].type == RooftopType.Large && roofTops[2].type == RooftopType.Large)
         {
-            reference.transform.position = new Vector2(roofTops[1].transform.position.x + 40f, reference.transform.position.y);
+            roofTops[2].transform.position = new Vector2(roofTops[1].transform.position.x + 40f, roofTops[2].transform.position.y);
         }
         else
         {
-            reference.transform.position = new Vector2(roofTops[1].transform.position.x + 34f, reference.transform.position.y);
+            roofTops[2].transform.position = new Vector2(roofTops[1].transform.position.x + 34f, roofTops[2].transform.position.y);
         }
     }
 }
