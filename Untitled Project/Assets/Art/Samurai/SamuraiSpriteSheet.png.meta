@@ -1,0 +1,605 @@
+fileFormatVersion: 2
+guid: b0963ce47c643e543825f1ad814264c3
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2677267156011954947
+    second: S_RArmBottom
+  - first:
+      213: -6401334722748935760
+    second: SamuraiSpriteSheet_1
+  - first:
+      213: 173026112890044357
+    second: S_RArmTop
+  - first:
+      213: -7100497609715902351
+    second: S_LArmTop
+  - first:
+      213: 5778563619083750076
+    second: S_Head
+  - first:
+      213: 2836240189547791760
+    second: S_RLegTop
+  - first:
+      213: -4144494656256892654
+    second: S_LArmBottom
+  - first:
+      213: -6938771196834817067
+    second: S_Torso
+  - first:
+      213: 7437648216969597579
+    second: S_Waist
+  - first:
+      213: 2524369529714526079
+    second: S_RLegBottom
+  - first:
+      213: -352677587458831121
+    second: S_Sword
+  - first:
+      213: 6386473140069085214
+    second: S_LFootTop
+  - first:
+      213: -6840721585269038957
+    second: SamuraiSpriteSheet_12
+  - first:
+      213: 6785094565299585774
+    second: S_LLegTop
+  - first:
+      213: -1422139835951627978
+    second: S_LLegBottom
+  - first:
+      213: 8753119373749795174
+    second: S_LFootBottom
+  - first:
+      213: 5995642620212282154
+    second: SamuraiSpriteSheet_16
+  - first:
+      213: 8269505680967328907
+    second: S_RFootTop
+  - first:
+      213: 3893716088754105924
+    second: SamuraiSpriteSheet_18
+  - first:
+      213: 985887156510353854
+    second: SamuraiSpriteSheet_19
+  - first:
+      213: 2408680927789861309
+    second: S_RFootBottom
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: S_RArmBottom
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 1432
+        width: 298
+        height: 507
+      alignment: 9
+      pivot: {x: 0.5696568, y: 0.9700771}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7095971ce2fc5714eaca1dcba75ace72
+      internalID: -2677267156011954947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SamuraiSpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 1937
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7421338c8d19c14c9eff14b8eedaa91
+      internalID: -6401334722748935760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: S_RArmTop
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 1797
+        width: 363
+        height: 159
+      alignment: 9
+      pivot: {x: 0.98413944, y: 0.4762078}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95db8182e5c5ebb46b7d7e00bf9c3065
+      internalID: 173026112890044357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: S_LArmTop
+      rect:
+        serializedVersion: 2
+        x: 1126
+        y: 1773
+        width: 159
+        height: 228
+      alignment: 9
+      pivot: {x: 0.24794938, y: 0.6240743}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 384fd3492afecac44aa8b7ec2463146f
+      internalID: -7100497609715902351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: S_Head
+      rect:
+        serializedVersion: 2
+        x: 1542
+        y: 1661
+        width: 421
+        height: 308
+      alignment: 9
+      pivot: {x: 0.13041922, y: 0.15900768}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e6801d72698bb942bdbea2a7b85d13d
+      internalID: 5778563619083750076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: S_RLegTop
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 760
+        width: 274
+        height: 530
+      alignment: 9
+      pivot: {x: 0.69875085, y: 0.9770556}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad4d0385be177c64f8c352a9a155d210
+      internalID: 2836240189547791760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: S_LArmBottom
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 1273
+        width: 239
+        height: 355
+      alignment: 9
+      pivot: {x: 0.8846834, y: 0.758984}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a691a61e2fe5364428c21f2d4be8a8e4
+      internalID: -4144494656256892654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: S_Torso
+      rect:
+        serializedVersion: 2
+        x: 919
+        y: 1031
+        width: 513
+        height: 510
+      alignment: 9
+      pivot: {x: 0.24977656, y: 0.30169463}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39b8aba5b6caa78479bdf93de8e363a2
+      internalID: -6938771196834817067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: S_Waist
+      rect:
+        serializedVersion: 2
+        x: 1615
+        y: 1157
+        width: 323
+        height: 324
+      alignment: 9
+      pivot: {x: 0.40365744, y: 0.36793762}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf1a602f3a90d80478bcc350b7e5abe4
+      internalID: 7437648216969597579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: S_RLegBottom
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 569
+        width: 519
+        height: 459
+      alignment: 9
+      pivot: {x: 0.94228154, y: 0.86862934}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2189ea207ead0ea429ff3e3464ccc255
+      internalID: 2524369529714526079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: S_Sword
+      rect:
+        serializedVersion: 2
+        x: 992
+        y: 742
+        width: 1157
+        height: 143
+      alignment: 9
+      pivot: {x: 0.86324936, y: 0.39687705}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e201092b55e3834b9bcd0b82da4e0f3
+      internalID: -352677587458831121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: S_LFootTop
+      rect:
+        serializedVersion: 2
+        x: 1455
+        y: 462
+        width: 261
+        height: 189
+      alignment: 9
+      pivot: {x: 0.94557023, y: 0.37961283}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 072f2c1585b940540a53c3e20969fc5f
+      internalID: 6386473140069085214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SamuraiSpriteSheet_12
+      rect:
+        serializedVersion: 2
+        x: 1899
+        y: 621
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 750ef1fa9c715024b88211e4df48b388
+      internalID: -6840721585269038957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: S_LLegTop
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 140
+        width: 475
+        height: 386
+      alignment: 9
+      pivot: {x: 0.06597592, y: 0.85270554}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a33008e8e4dfc5a49aa0f4aed56936ac
+      internalID: 6785094565299585774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: S_LLegBottom
+      rect:
+        serializedVersion: 2
+        x: 754
+        y: 114
+        width: 519
+        height: 460
+      alignment: 9
+      pivot: {x: 0.92720777, y: 0.8805277}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f845db49371fc0842b3246dfb253cfd1
+      internalID: -1422139835951627978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: S_LFootBottom
+      rect:
+        serializedVersion: 2
+        x: 1807
+        y: 347
+        width: 128
+        height: 210
+      alignment: 9
+      pivot: {x: 0.36174202, y: 0.94543225}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f86a8952de5e8d49a0c277a560878ae
+      internalID: 8753119373749795174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SamuraiSpriteSheet_16
+      rect:
+        serializedVersion: 2
+        x: 1915
+        y: 514
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bda5580956ef2b4598d0d3bbda22fea
+      internalID: 5995642620212282154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: S_RFootTop
+      rect:
+        serializedVersion: 2
+        x: 1424
+        y: 106
+        width: 187
+        height: 249
+      alignment: 9
+      pivot: {x: 0.89206177, y: 0.9264313}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1da491a82e4dd24ab4abeacc8b9a590
+      internalID: 8269505680967328907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SamuraiSpriteSheet_18
+      rect:
+        serializedVersion: 2
+        x: 1650
+        y: 249
+        width: 4
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa1132339bf29f04f8d58440f1d26182
+      internalID: 3893716088754105924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SamuraiSpriteSheet_19
+      rect:
+        serializedVersion: 2
+        x: 1752
+        y: 223
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1acf726550eab3d46b998fb7ea06e031
+      internalID: 985887156510353854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: S_RFootBottom
+      rect:
+        serializedVersion: 2
+        x: 1652
+        y: 95
+        width: 263
+        height: 125
+      alignment: 9
+      pivot: {x: 0.19239488, y: 0.6213506}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf4001b86e2acb747bddcf27772fb363
+      internalID: 2408680927789861309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 2d0f57a91cd800b4f98b6f779439d2b3
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
