@@ -17,32 +17,59 @@ public class Player : MonoBehaviour
 
     public float jumpForce;
 
-    Collider2D col;
+    BoxCollider2D col;
+    CircleCollider2D weaponCol;
+
+    private bool dead;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        anim = GetComponentInChildren<Animator>();
-        col = GetComponent<Collider2D>();
-
+        //anim = GetComponentInChildren<Animator>();
+        col = GetComponent<BoxCollider2D>();
+        weaponCol = GetComponentInChildren<CircleCollider2D>();
         attack = false;
         jump = false;
+
+        weaponCol.gameObject.SetActive(false);
+
+        dead = false;
     }
 
     private void Update()
     {
-        InputHandler();
-        HandleAnimations();
-        HandleCharacterMovement();
+        if (!dead)
+        {
+            InputHandler();
+            //HandleAnimations();
+            HandleCharacterMovement();
+        }
+    }
+    /// <summary>
+    /// Method to handle character movement
+    /// </summary>
+    private void HandleCharacterMovement()
+    {
+        if (attack)
+        {
+            weaponCol.gameObject.SetActive(true);
+        }
+        else
+        {
+            weaponCol.gameObject.SetActive(false);
+        }
     }
 
-    private void HandleCharacterMovement()
+    private void FixedUpdate()
     {
         if (jump && GroundCheck())
         {
             rb.AddForce(Vector3.up * jumpForce);
         }
     }
-
+    /// <summary>
+    /// Raycast to check if player is hitting the ground
+    /// </summary>
+    /// <returns></returns>
     public bool GroundCheck()
     {
         Vector2 footPosition = new Vector2(col.bounds.center.x, col.bounds.center.y - col.bounds.extents.y);
@@ -70,9 +97,12 @@ public class Player : MonoBehaviour
         {
             attack = true;
         }
-        else if(Input.GetMouseButtonUp(0))
-        {
-            attack = false;
+
+        if (attack) { 
+            if (Input.GetMouseButtonUp(0))
+            {
+                attack = false;
+            }
         }
     }
     /// <summary>

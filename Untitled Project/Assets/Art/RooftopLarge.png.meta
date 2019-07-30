@@ -1,7 +1,16 @@
 fileFormatVersion: 2
 guid: cd87b094e0853c64a9561d533e51bb48
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 9111083747894107499
+    second: RooftopLarge_0
+  - first:
+      213: 846107377545183221
+    second: RooftopLarge_1
+  - first:
+      213: -1148236404527432284
+    second: RooftopLarge_2
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -40,7 +49,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -82,7 +91,70 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: RooftopLarge_0
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 0
+        width: 4523
+        height: 969
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fae3611e2dc98cb43a88df7bd7487b46
+      internalID: 9111083747894107499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RooftopLarge_1
+      rect:
+        serializedVersion: 2
+        x: 5267
+        y: 0
+        width: 745
+        height: 968
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 779c92fe396693e4a9276c6794e23f13
+      internalID: 846107377545183221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RooftopLarge_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2
+        width: 744
+        height: 967
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d19fe0390d85c44ba0f77fd766d229f
+      internalID: -1148236404527432284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
