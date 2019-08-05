@@ -9,39 +9,67 @@ public class Player : MonoBehaviour
     Rigidbody2D rb;
     public bool attack;
     public bool jump;
-
+    private bool isJumping;
+    private bool isFalling;
+    public float jumpHeight;
+    public float jumpSpeed;
+    public float fallSpeed;
     Animator anim;
     [SerializeField] private bool isAttackPlaying;
     public float groundRaycastDistance;
     public LayerMask groundLayerMask;
-
-    public float jumpForce;
-
     BoxCollider2D col;
     CircleCollider2D weaponCol;
-
+    List<SpriteRenderer> spriteRenderers;
     private bool dead;
+    public bool isDead { get { return dead; } }
+    private Vector3 startPosition;
+
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        //anim = GetComponentInChildren<Animator>();
+        anim = GetComponentInChildren<Animator>();
         col = GetComponent<BoxCollider2D>();
         weaponCol = GetComponentInChildren<CircleCollider2D>();
+
+        spriteRenderers = new List<SpriteRenderer>();
+        SpriteRenderer[] spriteRendererArray = GetComponentsInChildren<SpriteRenderer>();
+        foreach(SpriteRenderer s in spriteRendererArray)
+        {
+            spriteRenderers.Add(s);
+        }
+        startPosition = transform.position;
+     
+    }
+    private void InitializeCharacter()
+    {
         attack = false;
         jump = false;
-
-        weaponCol.gameObject.SetActive(false);
-
+        isFalling = false;
         dead = false;
     }
-
+    public void OnPlayerResetEvent()
+    {
+        transform.position = startPosition;
+        foreach (SpriteRenderer s in spriteRenderers)
+            s.transform.rotation = Quaternion.Euler(Vector3.zero);
+        InitializeCharacter();
+    }
     private void Update()
     {
         if (!dead)
         {
+            if (!anim.gameObject.activeSelf)
+                anim.gameObject.SetActive(true);
+
             InputHandler();
-            //HandleAnimations();
+            HandleAnimations();
             HandleCharacterMovement();
+        }
+        else
+        {
+            anim.gameObject.SetActive(false);
         }
     }
     /// <summary>
@@ -49,22 +77,39 @@ public class Player : MonoBehaviour
     /// </summary>
     private void HandleCharacterMovement()
     {
-        if (attack)
+        if (jump && !isFalling)
         {
-            weaponCol.gameObject.SetActive(true);
+            if (transform.position.y < jumpHeight)
+                CalculateCharacterJump();
+            else
+            {
+                isFalling = true;
+            }
         }
         else
         {
-            weaponCol.gameObject.SetActive(false);
+            isFalling = true;
+        }
+
+        if (isFalling)
+        {
+            if (!GroundCheck())
+            {
+                CalculateCharacterFall();
+            }
+            else
+            {
+                isFalling = false;
+            }
         }
     }
-
-    private void FixedUpdate()
+    private void CalculateCharacterJump()
     {
-        if (jump && GroundCheck())
-        {
-            rb.AddForce(Vector3.up * jumpForce);
-        }
+        transform.position += Vector3.up * jumpSpeed * Time.deltaTime;
+    }
+    private void CalculateCharacterFall()
+    {
+        transform.position -= Vector3.up * fallSpeed * Time.deltaTime;
     }
     /// <summary>
     /// Raycast to check if player is hitting the ground
@@ -78,6 +123,14 @@ public class Player : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+        {
+            dead = true;
+        }
     }
     /// <summary>
     /// Method to handle player input

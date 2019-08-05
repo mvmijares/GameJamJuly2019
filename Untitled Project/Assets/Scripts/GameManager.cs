@@ -7,32 +7,71 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private UserInterfaceManager userInterfaceManager;
+    private Player player;
     public Rooftop[] roofTops;
     public float speed;
     public int score;
 
     private float currentTimer;
-    
+
+    public GameObject largeCrate;
+    public GameObject smallCrate;
+
+    Dictionary<Rooftop, Vector2> roofTopOrigins;
     //Initialize method
     private void Awake()
     {
         userInterfaceManager = FindObjectOfType<UserInterfaceManager>();
+
+        player = FindObjectOfType<Player>();
+
+        roofTopOrigins = new Dictionary<Rooftop, Vector2>();
+
+        foreach(Rooftop rooftop in roofTops)
+        {
+            roofTopOrigins.Add(rooftop, rooftop.transform.position);
+        }
+    }
+
+    private void InitializeIdleScore()
+    {
         InvokeRepeating("CalculateIdleScore", 1f, 1f);
     }
     // Update function
     private void Update()
     {
-        MoveTiles();
+        if (player.isDead)
+        {
+            CancelInvoke("CalculateIdleScore");
+        }
+        else
+        {
+            MoveTiles();
 
-        roofTops[0].CheckRooftopSpriteEvent();
-    }
+            roofTops[0].CheckRooftopSpriteEvent();
+        }
+        if (Input.GetKey(KeyCode.R))
+        {
+            OnResetGameEventCalled();
+        }
 
-    private void CalculateIdleScore()
-    {
-        score += 100;
         userInterfaceManager.UpdateScoreValue(score);
     }
 
+    private void OnResetGameEventCalled()
+    {
+        player.OnPlayerResetEvent();
+        foreach(KeyValuePair<Rooftop, Vector2> pair in roofTopOrigins)
+        {
+            pair.Key.transform.position = pair.Value;
+            pair.Key.DeleteObstacles();
+            pair.Key.ResetRooftop();
+        }
+    }
+    private void CalculateIdleScore()
+    {
+        score += 100;
+    }
     /// <summary>
     /// Method to move roof top to left based on speed.
     /// </summary>

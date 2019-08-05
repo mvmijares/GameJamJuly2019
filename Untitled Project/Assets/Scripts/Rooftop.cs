@@ -15,7 +15,7 @@ public class Rooftop : MonoBehaviour
     [SerializeField] private List<SpriteVisibilityCheck> sprites;
     public RooftopType type;
     public List<Transform> obstacleLocations;
-
+    Dictionary<Transform, GameObject> obstacleOrigins;
     public GameObject obstacleContainer;
     //Intialization method
     private void Awake()
@@ -26,13 +26,22 @@ public class Rooftop : MonoBehaviour
         obstacleLocations = new List<Transform>();
         Transform children = obstacleContainer.GetComponentInChildren<Transform>();
 
+        obstacleOrigins = new Dictionary<Transform, GameObject>();
         foreach(Transform child in children)
         {
             if(child != obstacleContainer.transform)
             {
                 if (child.gameObject.tag == "Obstacle")
+                {
                     obstacleLocations.Add(child);
 
+                    if(child.childCount > 0)
+                    {
+                        GameObject clone = Instantiate(child.GetChild(0).gameObject);
+                        clone.SetActive(false);
+                        obstacleOrigins.Add(child, clone);
+                    }
+                }
             }
         }
 
@@ -50,6 +59,20 @@ public class Rooftop : MonoBehaviour
         {
             gameManager.MoveRooftop(this);
             DeleteObstacles();
+            InitializeObstacles();
+        }
+    }
+    public void ResetRooftop()
+    {
+        foreach(KeyValuePair<Transform, GameObject> pair in obstacleOrigins)
+        {
+            GameObject clone = Instantiate(pair.Value);
+
+            clone.transform.SetParent(pair.Key);
+            clone.transform.localScale = Vector3.one * 2;
+            clone.transform.localPosition = new Vector3(0, -0.5f, 0);
+
+            clone.SetActive(true);
         }
     }
     private bool CheckSpritesVisibility()
@@ -70,8 +93,46 @@ public class Rooftop : MonoBehaviour
         {
             if (child.childCount > 0)
             {
-                Destroy(child.GetChild(0));
+                Destroy(child.GetChild(0).gameObject);
             }
         }
+    }
+
+    public void InitializeObstacles()
+    {
+        if (obstacleLocations.Count > 1)
+        {
+            int obstacles = UnityEngine.Random.Range(1, 4);
+
+            for (int i = 0; i < obstacles; i++)
+            {
+                GameObject obstacleRef = GetObstacle();
+
+                GameObject clone = Instantiate(obstacleRef);
+
+                clone.transform.SetParent(obstacleLocations[i]);
+                clone.transform.localPosition = new Vector3(0, -0.5f, 0);
+            }
+        }
+        else
+        {
+            GameObject obstacleRef = GetObstacle();
+
+            GameObject clone = Instantiate(obstacleRef);
+
+            clone.transform.SetParent(obstacleLocations[0]);
+            clone.transform.localPosition = new Vector3(0, -0.5f, 0);
+        }
+    }
+
+
+    public GameObject GetObstacle()
+    {
+        int choice = UnityEngine.Random.Range(1, 2);
+
+        if (choice == 1)
+            return gameManager.largeCrate;
+        else
+            return gameManager.smallCrate;
     }
 }

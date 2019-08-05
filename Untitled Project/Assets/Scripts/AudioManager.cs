@@ -4,18 +4,21 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    private static AudioManager _instance;
+    //private static AudioManager _instance;
 
-    public static AudioManager instance { get { return _instance; } }
+    //public static AudioManager instance { get { return _instance; } }
 
-    private void Awake()
-    {
-        if (instance != null && instance != this)
-            Destroy(gameObject);
-        else
-        {
-            _instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
-    }
+    //private void Awake()
+    //{
+    //    if (instance != null && instance != this)
+    //        Destroy(gameObject);
+    //    else
+    //    {
+    //        _instance = this;
+    //        DontDestroyOnLoad(this.gameObject);
+    //    }
+    //}
+
+    public AudioClip runningClip;
+
 }
