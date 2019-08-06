@@ -108,10 +108,17 @@ public class Rooftop : MonoBehaviour
             {
                 GameObject obstacleRef = GetObstacle();
 
+                float offset;
+
+                if (obstacleRef.tag == "Large Crate")
+                    offset = -0.5f;
+                else
+                    offset = -0.7f;
+                
                 GameObject clone = Instantiate(obstacleRef);
 
                 clone.transform.SetParent(obstacleLocations[i]);
-                clone.transform.localPosition = new Vector3(0, -0.5f, 0);
+                clone.transform.localPosition = new Vector3(0, offset, 0);
             }
         }
         else

@@ -77,10 +77,13 @@ public class Player : MonoBehaviour
     /// </summary>
     private void HandleCharacterMovement()
     {
-        if (jump && !isFalling)
+        if (jump)
         {
-            if (transform.position.y < jumpHeight)
+            if (transform.position.y < jumpHeight && !isFalling)
+            {
+                isJumping = true;
                 CalculateCharacterJump();
+            }
             else
             {
                 isFalling = true;
@@ -88,28 +91,25 @@ public class Player : MonoBehaviour
         }
         else
         {
-            isFalling = true;
+            if (!GroundCheck()) { 
+                isFalling = true;
+            }
         }
 
         if (isFalling)
         {
-            if (!GroundCheck())
-            {
-                CalculateCharacterFall();
-            }
-            else
-            {
+            CalculateCharacterFall();
+            if (GroundCheck())
                 isFalling = false;
-            }
         }
     }
     private void CalculateCharacterJump()
     {
-        transform.position += Vector3.up * jumpSpeed * Time.deltaTime;
+        transform.position = Vector2.Lerp(transform.position, (Vector2)transform.position + new Vector2(0, jumpHeight), Time.deltaTime * jumpSpeed);
     }
     private void CalculateCharacterFall()
     {
-        transform.position -= Vector3.up * fallSpeed * Time.deltaTime;
+        transform.position = Vector2.Lerp(transform.position, new Vector2(transform.position.x, -3.5f), Time.deltaTime * fallSpeed);
     }
     /// <summary>
     /// Raycast to check if player is hitting the ground
