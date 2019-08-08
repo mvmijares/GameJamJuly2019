@@ -70,7 +70,17 @@ public class Rooftop : MonoBehaviour
 
             clone.transform.SetParent(pair.Key);
             clone.transform.localScale = Vector3.one * 2;
-            clone.transform.localPosition = new Vector3(0, -0.5f, 0);
+            float hieghtOffset;
+
+            if (pair.Value.tag == "Large Crate")
+            {
+                hieghtOffset = -0.5f;
+            }
+            else
+            {
+                hieghtOffset = -0.7f;
+            }
+            clone.transform.localPosition = new Vector3(0, hieghtOffset, 0);
 
             clone.SetActive(true);
         }

@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-
     Rigidbody2D rb;
     public bool attack;
     public bool jump;
     private bool isJumping;
     private bool isFalling;
+    private bool isAttacking;
     public float jumpHeight;
     public float jumpSpeed;
     public float fallSpeed;
@@ -25,7 +25,10 @@ public class Player : MonoBehaviour
     public bool isDead { get { return dead; } }
     private Vector3 startPosition;
 
+    public GameObject swordArm;
+    public GameObject rightArm;
 
+    public GameObject weaponHitCollider;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -40,14 +43,16 @@ public class Player : MonoBehaviour
             spriteRenderers.Add(s);
         }
         startPosition = transform.position;
-     
+        InitializeCharacter();
     }
     private void InitializeCharacter()
     {
+        swordArm.SetActive(false);
         attack = false;
         jump = false;
         isFalling = false;
         dead = false;
+        isAttacking = false;
     }
     public void OnPlayerResetEvent()
     {
@@ -71,6 +76,18 @@ public class Player : MonoBehaviour
         {
             anim.gameObject.SetActive(false);
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+        {
+            dead = true;
+        }
+    }
+    private void SetWeaponHitCollider(bool condition)
+    {
+        weaponHitCollider.SetActive(condition);
     }
     /// <summary>
     /// Method to handle character movement
@@ -102,7 +119,25 @@ public class Player : MonoBehaviour
             if (GroundCheck())
                 isFalling = false;
         }
+
+
+        if (attack)
+        {
+            isAttacking = true;
+            SetWeaponHitCollider(true);
+        }
+        else
+        {
+            isAttacking = false;
+            SetWeaponHitCollider(false);
+        }
+
+        if(!GroundCheck())
+        {
+            isAttacking = false;
+        }
     }
+
     private void CalculateCharacterJump()
     {
         transform.position = Vector2.Lerp(transform.position, (Vector2)transform.position + new Vector2(0, jumpHeight), Time.deltaTime * jumpSpeed);
@@ -125,13 +160,6 @@ public class Player : MonoBehaviour
         return false;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
-        {
-            dead = true;
-        }
-    }
     /// <summary>
     /// Method to handle player input
     /// </summary>
@@ -179,6 +207,26 @@ public class Player : MonoBehaviour
         else
         {
             anim.SetBool("Jump", false);
+        }
+
+        HandleAttackAnimation();
+    }
+
+
+    private void HandleAttackAnimation()
+    {
+        if (GroundCheck())
+        {
+            if (attack)
+            {
+                rightArm.SetActive(false);
+                swordArm.SetActive(true);
+            }
+            else
+            {
+                swordArm.SetActive(false);
+                rightArm.SetActive(true);
+            }
         }
     }
 }

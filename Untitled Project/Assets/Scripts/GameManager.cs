@@ -72,6 +72,10 @@ public class GameManager : MonoBehaviour
     {
         score += 100;
     }
+    public void AddScore(int value)
+    {
+        score += value;
+    }
     /// <summary>
     /// Method to move roof top to left based on speed.
     /// </summary>

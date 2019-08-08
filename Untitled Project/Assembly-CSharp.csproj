@@ -63,12 +63,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\AttackAnimBehaviour.cs" />
+    <Compile Include="Assets\BloodBehaviour.cs" />
     <Compile Include="Assets\Low_Swordman\Demo\Scripts\CameraController.cs" />
     <Compile Include="Assets\Low_Swordman\Demo\Scripts\Demo_GM.cs" />
     <Compile Include="Assets\Low_Swordman\Demo\Scripts\GroundSensor.cs" />
     <Compile Include="Assets\Low_Swordman\Demo\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Low_Swordman\Demo\Scripts\Swordman.cs" />
     <Compile Include="Assets\Scripts\AudioManager.cs" />
+    <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\MainMenuInterface.cs" />
     <Compile Include="Assets\Scripts\Obstacle.cs" />
@@ -78,22 +80,22 @@
     <Compile Include="Assets\Scripts\UserInterfaceManager.cs" />
     <Compile Include="Assets\Scripts\Weapon.cs" />
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>D:/Unity Repositories/GameJamJuly2019/GameJamJuly2019/Untitled Project/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>D:/UnityRepositories/GameJamJuly2019/GameJamJuly2019/Untitled Project/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>D:/Unity Repositories/GameJamJuly2019/GameJamJuly2019/Untitled Project/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>D:/UnityRepositories/GameJamJuly2019/GameJamJuly2019/Untitled Project/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>D:/Unity Repositories/GameJamJuly2019/GameJamJuly2019/Untitled Project/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>D:/UnityRepositories/GameJamJuly2019/GameJamJuly2019/Untitled Project/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>D:/Unity Repositories/GameJamJuly2019/GameJamJuly2019/Untitled Project/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>D:/UnityRepositories/GameJamJuly2019/GameJamJuly2019/Untitled Project/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>D:/Unity Repositories/GameJamJuly2019/GameJamJuly2019/Untitled Project/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>D:/UnityRepositories/GameJamJuly2019/GameJamJuly2019/Untitled Project/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>D:/Unity Repositories/GameJamJuly2019/GameJamJuly2019/Untitled Project/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+      <HintPath>D:/UnityRepositories/GameJamJuly2019/GameJamJuly2019/Untitled Project/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -279,13 +281,13 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.12f1/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>D:/Unity Repositories/GameJamJuly2019/GameJamJuly2019/Untitled Project/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>D:/UnityRepositories/GameJamJuly2019/GameJamJuly2019/Untitled Project/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>D:/Unity Repositories/GameJamJuly2019/GameJamJuly2019/Untitled Project/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>D:/UnityRepositories/GameJamJuly2019/GameJamJuly2019/Untitled Project/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>D:/Unity Repositories/GameJamJuly2019/GameJamJuly2019/Untitled Project/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>D:/UnityRepositories/GameJamJuly2019/GameJamJuly2019/Untitled Project/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.12f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
