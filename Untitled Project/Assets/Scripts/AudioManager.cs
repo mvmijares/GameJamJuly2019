@@ -9,12 +9,12 @@ public class AudioManager : MonoBehaviour
 {
 
     public bool mute;
-    [Range(0,100)]
-    public int volume;
+    [Range(0f, 1f)]
+    public float volume;
 
-    [SerializeField] private int originVolume; // volume before mute;
+    [SerializeField] private float originVolume; // volume before mute;
 
-    private GameObject backgroundAudio;
+    [SerializeField] private GameObject backgroundAudio;
     private GameObject audioToggle;
     private static AudioManager _instance;
 
@@ -51,8 +51,9 @@ public class AudioManager : MonoBehaviour
             case "Game":
                 {
                     backgroundAudio = GameObject.FindGameObjectWithTag("Background Music");
-                    if(backgroundAudio)
-                        backgroundAudio.GetComponent<AudioSource>().volume = (float)(volume / 100);
+                    if (backgroundAudio)
+                        backgroundAudio.GetComponent<AudioSource>().volume = volume;
+
                     break;
                 }
             case "Main Menu":

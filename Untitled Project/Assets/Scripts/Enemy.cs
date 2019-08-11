@@ -16,9 +16,13 @@ public class Enemy : MonoBehaviour
     {
         _gameManager = FindObjectOfType<GameManager>();
 
+    
+    }
+    public void InitializeEnemy()
+    {
         enemyLayerMask = LayerMask.NameToLayer("Ninja");
         obstacleLayerMask = LayerMask.NameToLayer("Obstacle");
-        Physics.IgnoreLayerCollision(enemyLayerMask, obstacleLayerMask);
+        Physics2D.IgnoreLayerCollision(enemyLayerMask, obstacleLayerMask);
     }
     private void Update()
     {
@@ -27,7 +31,7 @@ public class Enemy : MonoBehaviour
 
     private void HandleEnemyMovement()
     {
-        transform.position += Vector3.right * speed * Time.deltaTime;
+        transform.position -= Vector3.right * speed * Time.deltaTime;
     }
 
     public void HandleEnemyDeath()
@@ -35,6 +39,7 @@ public class Enemy : MonoBehaviour
         GameObject clone = Instantiate(deathAnimation, transform.position, Quaternion.identity);
         if (_gameManager)
             _gameManager.AddScore(scoreValue);
+
         Destroy(this.gameObject);
     }
 }

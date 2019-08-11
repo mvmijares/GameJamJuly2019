@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
     BoxCollider2D col;
     CircleCollider2D weaponCol;
     List<SpriteRenderer> spriteRenderers;
-    private bool dead;
+    [SerializeField] private bool dead;
     public bool isDead { get { return dead; } }
     private Vector3 startPosition;
 
@@ -59,6 +59,7 @@ public class Player : MonoBehaviour
         transform.position = startPosition;
         foreach (SpriteRenderer s in spriteRenderers)
             s.transform.rotation = Quaternion.Euler(Vector3.zero);
+
         InitializeCharacter();
     }
     private void Update()
@@ -76,8 +77,18 @@ public class Player : MonoBehaviour
         {
             anim.gameObject.SetActive(false);
         }
-    }
 
+        CheckPlayerHasFallen();
+    }
+    private void CheckPlayerHasFallen()
+    {
+        Vector3 playerViewPos = Camera.main.WorldToViewportPoint(transform.position);
+
+        if(playerViewPos.y < 0.1f)
+        {
+            dead = true;
+        }
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
@@ -144,7 +155,7 @@ public class Player : MonoBehaviour
     }
     private void CalculateCharacterFall()
     {
-        transform.position = Vector2.Lerp(transform.position, new Vector2(transform.position.x, -3.5f), Time.deltaTime * fallSpeed);
+        transform.position = Vector2.Lerp(transform.position, new Vector2(transform.position.x, -5f), Time.deltaTime * fallSpeed);
     }
     /// <summary>
     /// Raycast to check if player is hitting the ground

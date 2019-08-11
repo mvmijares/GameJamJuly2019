@@ -17,6 +17,8 @@ public class Rooftop : MonoBehaviour
     public List<Transform> obstacleLocations;
     Dictionary<Transform, GameObject> obstacleOrigins;
     public GameObject obstacleContainer;
+    public GameObject enemy;
+
     //Intialization method
     private void Awake()
     {
@@ -62,6 +64,15 @@ public class Rooftop : MonoBehaviour
             InitializeObstacles();
         }
     }
+    private bool CheckSpritesVisibility()
+    {
+        foreach (SpriteVisibilityCheck sprite in sprites)
+        {
+            if (!sprite.isInvisible)
+                return false;
+        }
+        return true;
+    }
     public void ResetRooftop()
     {
         foreach(KeyValuePair<Transform, GameObject> pair in obstacleOrigins)
@@ -85,15 +96,7 @@ public class Rooftop : MonoBehaviour
             clone.SetActive(true);
         }
     }
-    private bool CheckSpritesVisibility()
-    {
-        foreach(SpriteVisibilityCheck sprite in sprites)
-        {
-            if (!sprite.isInvisible)
-                return false;
-        }
-        return true;
-    }
+ 
     /// <summary>
     /// Method for deleting obstacles once rooftop goes out of screen
     /// </summary>
@@ -130,6 +133,17 @@ public class Rooftop : MonoBehaviour
                 clone.transform.SetParent(obstacleLocations[i]);
                 clone.transform.localPosition = new Vector3(0, offset, 0);
             }
+
+            int enemySpawnChance = UnityEngine.Random.Range(0, 1);
+            
+            if(enemySpawnChance == 0)
+            {
+                GameObject newEnemy = Instantiate(enemy, obstacleLocations[obstacleLocations.Count - 1].position + new Vector3(0,1f, 0f), enemy.transform.rotation);
+                Enemy component = newEnemy.GetComponent<Enemy>();
+                component.InitializeEnemy();
+                component.speed = 12f;
+            }
+
         }
         else
         {

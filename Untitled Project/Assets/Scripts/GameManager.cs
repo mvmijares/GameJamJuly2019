@@ -18,6 +18,11 @@ public class GameManager : MonoBehaviour
     public GameObject smallCrate;
 
     Dictionary<Rooftop, Vector2> roofTopOrigins;
+
+
+    public float gameStartTime;
+    private float currentStartTime;
+    private bool initializeCondition; 
     //Initialize method
     private void Awake()
     {
@@ -31,14 +36,32 @@ public class GameManager : MonoBehaviour
         {
             roofTopOrigins.Add(rooftop, rooftop.transform.position);
         }
+
+        currentStartTime = 0.0f;
+        initializeCondition = false;
     }
 
-    private void InitializeIdleScore()
-    {
-        InvokeRepeating("CalculateIdleScore", 1f, 1f);
-    }
     // Update function
     private void Update()
+    {
+        currentStartTime += Time.deltaTime;
+        if(currentStartTime > gameStartTime)
+        {
+            if (!initializeCondition)
+            {
+                InitializeIdleScore();
+                initializeCondition = true;
+            }
+            HandleGameTasks();
+        }
+        HandleUserInterface();
+
+        if (Input.GetKey(KeyCode.R))
+        {
+            OnResetGameEventCalled();
+        }
+    }
+    private void HandleGameTasks()
     {
         if (player.isDead)
         {
@@ -50,23 +73,6 @@ public class GameManager : MonoBehaviour
 
             roofTops[0].CheckRooftopSpriteEvent();
         }
-        if (Input.GetKey(KeyCode.R))
-        {
-            OnResetGameEventCalled();
-        }
-
-        userInterfaceManager.UpdateScoreValue(score);
-    }
-
-    private void OnResetGameEventCalled()
-    {
-        player.OnPlayerResetEvent();
-        foreach(KeyValuePair<Rooftop, Vector2> pair in roofTopOrigins)
-        {
-            pair.Key.transform.position = pair.Value;
-            pair.Key.DeleteObstacles();
-            pair.Key.ResetRooftop();
-        }
     }
     private void CalculateIdleScore()
     {
@@ -75,6 +81,42 @@ public class GameManager : MonoBehaviour
     public void AddScore(int value)
     {
         score += value;
+    }
+    private void HandleUserInterface()
+    {
+        userInterfaceManager.UpdateScoreValue(score);
+    }
+    private void InitializeIdleScore()
+    {
+        score = 0;
+        InvokeRepeating("CalculateIdleScore", 1f, 1f);
+    }
+    private void OnResetGameEventCalled()
+    {
+        Enemy[] enemies = GameObject.FindObjectsOfType<Enemy>();
+        foreach(Enemy e in enemies)
+        {
+            Destroy(e.gameObject);
+        }
+        CancelInvoke("CalculateIdleScore");
+        ResetRoofTopPositions();
+        player.OnPlayerResetEvent();
+        score = 0;
+        currentStartTime = 0.0f;
+        initializeCondition = false;
+    }
+
+    private void ResetRoofTopPositions()
+    {
+        int i = 0;
+        foreach (KeyValuePair<Rooftop, Vector2> pair in roofTopOrigins)
+        {
+            pair.Key.transform.position = pair.Value;
+            pair.Key.DeleteObstacles();
+            pair.Key.ResetRooftop();
+            roofTops[i] = pair.Key;
+            i++;
+        }
     }
     /// <summary>
     /// Method to move roof top to left based on speed.
