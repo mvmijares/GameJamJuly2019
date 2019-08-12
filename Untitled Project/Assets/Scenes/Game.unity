@@ -764,6 +764,7 @@ MonoBehaviour:
   smallCrate: {fileID: 4026617914091076591, guid: 550be536d4650e947a01af442579886f,
     type: 3}
   gameStartTime: 3
+  deathTimer: 1
 --- !u!4 &1270097280
 Transform:
   m_ObjectHideFlags: 0
@@ -3252,7 +3253,7 @@ PrefabInstance:
     - target: {fileID: 8628739054499332064, guid: 0bb2ec194467a1e44bdb2234de51c3cb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -2.92
       objectReference: {fileID: 0}
     - target: {fileID: 8628739054499332064, guid: 0bb2ec194467a1e44bdb2234de51c3cb,
         type: 3}

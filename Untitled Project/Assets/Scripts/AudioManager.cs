@@ -33,17 +33,6 @@ public class AudioManager : MonoBehaviour
             audioToggle.GetComponent<Toggle>().onValueChanged.RemoveAllListeners();
         }
     }
-
-    private void Awake()
-    {
-        if (instance != null && instance != this)
-            Destroy(gameObject);
-        else
-        {
-            _instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
-    }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         switch (scene.name)
@@ -68,6 +57,17 @@ public class AudioManager : MonoBehaviour
                 }
         }
     }
+    private void Awake()
+    {
+        if (instance != null && instance != this)
+            Destroy(gameObject);
+        else
+        {
+            _instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+    }
+   
     private void OnToggleValueChanged(Toggle change)
     {
         if (!change.isOn)

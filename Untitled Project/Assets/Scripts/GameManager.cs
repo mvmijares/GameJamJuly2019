@@ -2,16 +2,21 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    private static GameManager _isntance;
+    public static GameManager instance { get { return _isntance; } }
+
     private UserInterfaceManager userInterfaceManager;
+    private CreditsInterface creditsInterface;
     private Player player;
     public Rooftop[] roofTops;
     public float speed;
     public int score;
-
+    private int _lastScore;
+    public int lastScore { get { return _lastScore; } }
     private float currentTimer;
 
     public GameObject largeCrate;
@@ -22,9 +27,56 @@ public class GameManager : MonoBehaviour
 
     public float gameStartTime;
     private float currentStartTime;
-    private bool initializeCondition; 
+    private bool initializeCondition;
+    Scene currScene;
+
+    public float deathTimer;
+    private float currentDeathTimer;
+
     //Initialize method
     private void Awake()
+    {
+        InitializeSingleton();
+    }
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+    private void InitializeSingleton()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            _isntance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+    }
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        currScene = scene;
+        switch (scene.name)
+        {
+            case "Game":
+                {
+                    InitializeGame();
+                    break;
+                }
+            case "Credits":
+                {
+                    InitializeCredits();
+                    break;
+                }
+        }
+    }
+
+    private void InitializeGame()
     {
         userInterfaceManager = FindObjectOfType<UserInterfaceManager>();
 
@@ -32,7 +84,7 @@ public class GameManager : MonoBehaviour
 
         roofTopOrigins = new Dictionary<Rooftop, Vector2>();
 
-        foreach(Rooftop rooftop in roofTops)
+        foreach (Rooftop rooftop in roofTops)
         {
             roofTopOrigins.Add(rooftop, rooftop.transform.position);
         }
@@ -40,32 +92,63 @@ public class GameManager : MonoBehaviour
         currentStartTime = 0.0f;
         initializeCondition = false;
     }
-
+    private void InitializeCredits()
+    {
+        creditsInterface = FindObjectOfType<CreditsInterface>();
+        creditsInterface.scoreValue.text = _lastScore.ToString();
+    }
     // Update function
     private void Update()
     {
-        currentStartTime += Time.deltaTime;
-        if(currentStartTime > gameStartTime)
+        switch (currScene.name)
         {
-            if (!initializeCondition)
-            {
-                InitializeIdleScore();
-                initializeCondition = true;
-            }
-            HandleGameTasks();
+            case "Game":
+                {
+                    currentStartTime += Time.deltaTime;
+                    if (currentStartTime > gameStartTime)
+                    {
+                        if (!initializeCondition)
+                        {
+                            InitializeIdleScore();
+                            initializeCondition = true;
+                        }
+                        HandleGameTasks();
+                    }
+                    HandleUserInterface();
+                    if (Input.GetKey(KeyCode.R))
+                    {
+                        OnResetGameEventCalled();
+                    }
+                    break;
+                }
+            case "Credits":
+                {
+                    
+                    break;
+                }
         }
-        HandleUserInterface();
-
-        if (Input.GetKey(KeyCode.R))
+    
+        if (Input.GetKey(KeyCode.Escape))
         {
-            OnResetGameEventCalled();
+            SceneManager.LoadScene("Credits");
         }
     }
     private void HandleGameTasks()
     {
         if (player.isDead)
         {
-            CancelInvoke("CalculateIdleScore");
+          
+            _lastScore = score;
+
+            if(IsInvoking("CalculateIdleScore"))
+                CancelInvoke("CalculateIdleScore");
+
+            currentDeathTimer += Time.deltaTime;
+            if (currentDeathTimer >= deathTimer)
+            {
+                currentDeathTimer = 0;
+                OnResetGameEventCalled();
+            }
         }
         else
         {
@@ -88,7 +171,6 @@ public class GameManager : MonoBehaviour
     }
     private void InitializeIdleScore()
     {
-        score = 0;
         InvokeRepeating("CalculateIdleScore", 1f, 1f);
     }
     private void OnResetGameEventCalled()
@@ -101,6 +183,7 @@ public class GameManager : MonoBehaviour
         CancelInvoke("CalculateIdleScore");
         ResetRoofTopPositions();
         player.OnPlayerResetEvent();
+
         score = 0;
         currentStartTime = 0.0f;
         initializeCondition = false;
